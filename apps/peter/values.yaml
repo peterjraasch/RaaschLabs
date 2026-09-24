@@ -1,0 +1,4 @@
+imagePullSecrets: [{ name: ghcr }]
+title: Resume
+description: Peter Raasch's resume.
+image: ghcr.io/peterjraasch/resume:28c1b74a9d9bb85c829987f44584a801c5b25433
