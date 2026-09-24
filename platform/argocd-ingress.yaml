@@ -1,0 +1,28 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-tls
+  namespace: argocd
+spec:
+  secretName: argocd-tls
+  issuerRef: { name: letsencrypt, kind: ClusterIssuer }
+  dnsNames: ["argocd.raaschlabs.com"]
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts: [argocd.raaschlabs.com]
+      secretName: argocd-tls
+  rules:
+    - host: argocd.raaschlabs.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service: { name: argocd-server, port: { number: 80 } }

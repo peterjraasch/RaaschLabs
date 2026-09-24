@@ -1,0 +1,17 @@
+image: ""
+port: 8080
+replicas: 1
+baseDomain: raaschlabs.com
+tlsSecret: wildcard-raaschlabs-tls
+probes: true            # Spring Boot Actuator liveness/readiness
+imagePullSecrets: []
+env: []
+resources:
+  requests: { cpu: 50m, memory: 384Mi }
+  limits: { memory: 768Mi }
+title: ""               # display name shown on the www directory
+description: ""         # one-line description shown on the www directory
+extraHosts: []          # additional hostnames, e.g. [raaschlabs.com] for the apex
+listed: true            # false hides the app from the www directory
+rbac:
+  readIngresses: false  # true grants the app read-only access to Ingresses in this namespace

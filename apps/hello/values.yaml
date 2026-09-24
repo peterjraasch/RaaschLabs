@@ -1,0 +1,8 @@
+title: Hello
+description: Smoke-test app (traefik/whoami) that echoes request details.
+image: traefik/whoami:latest
+port: 80
+probes: false
+resources:
+  requests: { cpu: 10m, memory: 16Mi }
+  limits: { memory: 64Mi }

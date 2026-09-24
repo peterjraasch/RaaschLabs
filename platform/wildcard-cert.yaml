@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-raaschlabs
+  namespace: apps
+spec:
+  secretName: wildcard-raaschlabs-tls
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  dnsNames:
+    - "*.raaschlabs.com"
+    - "raaschlabs.com"

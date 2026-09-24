@@ -1,0 +1,30 @@
+{{- $host := printf "%s.%s" .Release.Name .Values.baseDomain }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}
+  annotations:
+    raaschlabs.com/listed: {{ .Values.listed | quote }}
+    raaschlabs.com/title: {{ default .Release.Name .Values.title | quote }}
+    raaschlabs.com/description: {{ .Values.description | quote }}
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - {{ $host }}
+        {{- range .Values.extraHosts }}
+        - {{ . }}
+        {{- end }}
+      secretName: {{ .Values.tlsSecret }}
+  rules:
+    {{- range concat (list $host) .Values.extraHosts }}
+    - host: {{ . }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $.Release.Name }}
+                port: { number: 80 }
+    {{- end }}
