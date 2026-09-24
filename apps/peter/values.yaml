@@ -1,4 +1,0 @@
-image: ghcr.io/peterjraasch/resume:latest-placeholder
-imagePullSecrets: [{ name: ghcr }]
-env:
-  - { name: SPRING_PROFILES_ACTIVE, value: dev }
