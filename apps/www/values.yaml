@@ -4,4 +4,4 @@ description: Directory of apps running on this platform.
 extraHosts: [raaschlabs.com]
 rbac: { readIngresses: true }
 listed: false
-image: ghcr.io/peterjraasch/www:b84bd5632df469e83380a2be959f08aaa088eef0
+image: ghcr.io/peterjraasch/www:8100ba55a402afab2a1a2dbd0d0d5374bfeef24e
