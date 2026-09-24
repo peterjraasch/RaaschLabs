@@ -1,0 +1,7 @@
+imagePullSecrets: [{ name: ghcr }]
+title: Raasch Labs
+description: Directory of apps running on this platform.
+extraHosts: [raaschlabs.com]
+rbac: { readIngresses: true }
+listed: false
+image: ghcr.io/peterjraasch/www:b84bd5632df469e83380a2be959f08aaa088eef0
